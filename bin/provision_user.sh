@@ -26,24 +26,6 @@ fi
 cd ~vagrant/.emacs.d && $CASK install && cd ~vagrant && chown -R vagrant ~vagrant/.emacs.d
 
 #
-# Zsh config
+# Dotfiles
 #
-if [[ ! -d ~vagrant/.oh-my-zsh ]] ; then
-    git clone https://github.com/iantruslove/oh-my-zsh.git ~vagrant/.oh-my-zsh
-fi
-if [[ ! -e ~vagrant/.zshrc ]] ; then
-    ln -s ~vagrant/.oh-my-zsh/zshrc ~vagrant/.zshrc
-fi
-
-sudo chsh -s /bin/zsh vagrant
-
-#
-# Tmux (dotfiles)
-#
-DOTFILES_DIR=~vagrant/.dotfiles
-if [[ ! -d $DOTFILES_DIR ]] ; then
-    git clone https://github.com/iantruslove/.dotfiles.git $DOTFILES_DIR
-fi
-if [[ ! -e ~vagrant/.tmux.conf ]] ; then
-    ln -s $DOTFILES_DIR/link/.tmux.conf ~vagrant/.tmux.conf
-fi
+bash -c "$(wget -qO - https://raw.github.com/iantruslove/.dotfiles/master/bin/dotfiles)" && source ~/.bashrc

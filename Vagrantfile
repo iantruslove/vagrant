@@ -17,15 +17,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Basic provisioning is via a shell script
   config.vm.provision "shell", path: "bin/provision.sh"
 
- 
   # Some userland configuration needs doing too
   config.vm.provision "shell",  path: "bin/provision_user.sh", privileged: false
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
   end
 
-
+  # Forward some ports for web servers
+  config.vm.network :forwarded_port, guest: 80, host: 10080
+  config.vm.network :forwarded_port, guest: 8080, host: 18080
+  
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"
