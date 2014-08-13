@@ -28,8 +28,4 @@ rm ~/.ssh/tmp_hosts
 #
 # Dotfiles
 #
-##bash -c "$(wget -qO - https://raw.github.com/iantruslove/.dotfiles/master/bin/dotfiles)" && source ~/.bashrc
-git clone https://github.com/iantruslove/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-git checkout DoC
-bash -c "$(cat ~/.dotfiles/bin/dotfiles)" && source ~/.bashrc
+bash -c "$(wget -qO - https://raw.github.com/iantruslove/.dotfiles/master/bin/dotfiles)" && source ~/.bashrc
