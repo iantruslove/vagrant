@@ -57,3 +57,7 @@ apt-get install oracle-java7-installer -y
 wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -O /usr/local/bin/lein
 chmod a+x /usr/local/bin/lein
 
+cat >> /etc/motd.tail <<EOF
+Emacs (with emacs-live) is ready to go.
+The tmux prefix key is C-z.
+EOF
