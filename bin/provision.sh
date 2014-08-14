@@ -45,6 +45,7 @@ fi
 check_and_install build-essential
 check_and_install curl
 check_and_install git
+check_and_install unzip
 check_and_install tmux
 check_and_install tree
 check_and_install vim
