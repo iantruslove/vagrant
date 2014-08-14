@@ -42,12 +42,14 @@ if [[ -z `emacs --version | grep "Emacs 24"` ]] ; then
     apt-get install emacs24 -y
 fi
 
+check_and_install build-essential
 check_and_install curl
 check_and_install git
 check_and_install tmux
 check_and_install tree
 check_and_install vim
 check_and_install zsh
+
 
 # Install Oracle Java 7
 echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
