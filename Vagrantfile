@@ -29,6 +29,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Forward some ports for web servers
   config.vm.network :forwarded_port, guest: 80, host: 10080, auto_correct: true
   config.vm.network :forwarded_port, guest: 8080, host: 18080, auto_correct: true
+  # RabbitMQ and its admin app
+  config.vm.network :forwarded_port, guest: 5672, host: 5672, auto_correct: true
+  config.vm.network :forwarded_port, guest: 15672, host: 15672, auto_correct: true
   
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
