@@ -4,16 +4,16 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "precise64"
+  config.vm.box              = "precise64"
+  config.ssh.forward_agent   = true
+  config.vbguest.auto_update = true
 
-  config.ssh.forward_agent = true
+  config.vm.provision :ansible do |ansible|
+    ansible.verbose = 'v'
+    ansible.playbook = 'provisioning/main.yml'
+    ansible.raw_ssh_args = ["-o UserKnownHostsFile=/dev/null", "-o ForwardAgent=yes"]
+  end
   
-  # Basic provisioning is via a shell script
-  config.vm.provision "shell", path: "bin/provision.sh"
-
-  # Some userland configuration needs doing too
-  config.vm.provision "shell",  path: "bin/provision_user.sh", privileged: false
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]

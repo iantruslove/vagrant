@@ -1,0 +1,2 @@
+---
+- include: basic-dev-env.yml tags=basic-dev-env

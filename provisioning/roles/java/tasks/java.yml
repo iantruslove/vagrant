@@ -1,0 +1,14 @@
+---
+- name: Ensure JDK install directory
+  file: path=/opt/java state=directory
+  sudo: yes
+
+- name: Download and unpack Oracle JDK
+  shell: curl -L --cookie oraclelicense=accept-backup-cookie {{java.url}} | tar zx -C /opt/java --strip-components 1 creates=/opt/java/bin
+  sudo: yes
+
+# TODO: install JCE unlimited crypto strength JARs
+
+- name: Set as system java
+  command: update-alternatives --install /usr/bin/java java /opt/java/bin/java 0
+  sudo: yes

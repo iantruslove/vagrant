@@ -1,0 +1,2 @@
+---
+- include: emacs.yml tags=common

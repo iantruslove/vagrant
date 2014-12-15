@@ -1,0 +1,8 @@
+---
+- name: Download Leiningen
+  get_url: url=https://raw.github.com/technomancy/leiningen/stable/bin/lein dest=/usr/local/bin/lein
+  sudo: yes
+
+- name: Install Lein
+  file: path=/usr/local/bin/lein mode=0755
+  sudo: yes

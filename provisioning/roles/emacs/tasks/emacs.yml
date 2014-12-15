@@ -1,0 +1,12 @@
+---
+- name: Add PPA for Emacs24
+  apt_repository: repo='ppa:cassou/emacs' update_cache=yes
+  sudo: yes
+
+- name: Remove any old Emacsen
+  apt: name=emacs state=absent
+  sudo: yes
+
+- name: Install Emacs 24
+  apt: name=emacs24 state=present
+  sudo: yes
