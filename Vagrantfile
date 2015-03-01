@@ -10,14 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = true
 
   config.vm.provision :ansible do |ansible|
-    ansible.verbose = 'v'
+    ansible.verbose = 'vvv'
     ansible.playbook = 'provisioning/main.yml'
     ansible.raw_ssh_args = ["-o UserKnownHostsFile=/dev/null", "-o ForwardAgent=yes"]
   end
   
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]
     vb.customize ["guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000]
   end
 
