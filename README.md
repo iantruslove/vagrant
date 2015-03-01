@@ -4,7 +4,10 @@ How many Vagrant VMs must I set up before I realize I should automate it?  NO MO
 
 ## Installation
 
-1. Prerequisite: [Vagrant](http://www.vagrantup.com/)
+1. Prerequisites:
+  * [Vagrant](http://www.vagrantup.com/)
+  * vagrant-vbguest
+  * Ansible
 2. `vagrant up && vagrant ssh`
 3. There is no step 3.
 
